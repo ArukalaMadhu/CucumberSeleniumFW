@@ -10,13 +10,12 @@ import cucumber.api.testng.CucumberFeatureWrapper;
 import cucumber.api.testng.TestNGCucumberRunner;
 
 @CucumberOptions(
-		features = "src/features",//the path of the entire feature file path or folder/package path
-		glue = {"com/stepdefinition"},//the path of step definition files
-		format = {"pretty","html:target/cucumber-reports/cucumber-pretty",
-				"html:target/cucumber-reports/cucumber-pretty",
-                "json:target/cucumber-reports/CucumberTestReport.json",
-                "rerun:target/cucumber-reports/rerun.txt"}, // generate different type of output files
-		plugin ="json:target/cucumber-reports/CucumberTestReport.json",
+		features = "src/features",//the path of the feature files location or folder/package path
+		glue = {"com.stepdefinition"},//the path of step definition files
+//		format = {"pretty","html:target/cucumber-reports/cucumber-pretty",
+//                "json:target/cucumber-reports/CucumberTestReport.json",
+//                "rerun:target/cucumber-reports/rerun.txt"}, // generate different type of output files
+		plugin = {"pretty","html:target/cucumber-reports/cucumber-pretty","json:target/cucumber-reports/CucumberTestReport.json"},
 		dryRun = false,  //if dryRun=true => This will check immediately whether steps has definition or not. (only checking purpose)
 		monochrome = true, //display the output in console in readable format
 		strict = true // it will fail the execution if it finds any undefined steps

@@ -11,6 +11,7 @@ When I verify google home page "<title>"
 Then I verify that the page displays search text box
 |name|
 |q|
+#|m|
 And the page displays Google Search button
 # Data Driven Using Tables
 Then the page displays Im Feeling Lucky button
@@ -21,19 +22,19 @@ Then the page displays Im Feeling Lucky button
 Examples:
 	|title|
 	|Google|
-	#|goggle|
+#	|Google|
 
-@smokeTest
-Scenario: Check Gmail Login Page
-Given Open Gmail "http://gmail.com" 
-
-Scenario: Check Facebook Login Page
-Given Open Facebook "http://facebook.com" 
-
-@E2E
-Scenario: Check Google Home Page
-Given Open google "http://google.com" 
-
+#@smokeTest
+#Scenario: Check Gmail Login Page
+#Given Open Gmail "http://gmail.com" 
+#
+#Scenario: Check Facebook Login Page
+#Given Open Facebook "http://facebook.com" 
+#
+#@E2E
+#Scenario: Check Google Home Page
+#Given Open google "http://google.com" 
+#
 
 
 # Data Driven Testing Using Cucumber

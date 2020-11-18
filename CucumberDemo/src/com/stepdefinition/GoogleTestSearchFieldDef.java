@@ -38,7 +38,7 @@ public class GoogleTestSearchFieldDef extends SeleniumActions {
 		
 		d.forEach(rws -> {
 			List <String> rw = rws;
-			Assert.assertTrue(isElementDisplayed(By.id(rw.get(0))),"I'm Feeling Lucky is not displayed ");			
+			Assert.assertTrue(isElementDisplayed(By.id(rw.get(0)),10),"I'm Feeling Lucky is not displayed ");			
 		});
 		 
 		//Assert.assertTrue( isElementDisplayed(By.id(d.get(0).get(0))),"I'm Feeling Lucky is not displayed ");
