@@ -1,0 +1,13 @@
+Configuration:
+  status: warn
+  Appenders:
+    File:
+      name: File_Appender
+      fileName: logfile.log
+      PatternLayout:
+        Pattern: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
+  Loggers:
+    Root:
+      level: debug
+      AppenderRef:
+        ref: File_Appender

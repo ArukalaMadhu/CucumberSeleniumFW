@@ -23,5 +23,10 @@ public class DriverInit {
 	public static void setDriverNull() {
 		DriverInit.driver = null;
 	}
+	public static void quitDriver() {
+		if(DriverInit.driver!=null)
+			DriverInit.driver.quit();
+		DriverInit.setDriverNull();
+	}
 
 }

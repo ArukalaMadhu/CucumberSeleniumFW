@@ -11,13 +11,13 @@ public class FacebookHomePage extends SeleniumActions{
 	public void openFacebook(String URL) {
 		openURL(URL);
 	}
-	@Before
-	public void initDriver() {
-		super.driver =  DriverInit.getDriver(); 
-	}
-	
-	@After
-	public void quitBrowser() {
-		quitDriver();
-	}
+//	@Before
+//	public void initDriver() {
+//		super.driver =  DriverInit.getDriver(); 
+//	}
+//	
+//	@After
+//	public void quitBrowser() {
+//		quitDriver();
+//	}
 }

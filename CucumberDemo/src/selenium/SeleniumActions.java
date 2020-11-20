@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
@@ -15,11 +17,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import base.DriverInit;
 
-public class SeleniumActions {
-	
-	public WebDriver driver=null;
+public class SeleniumActions{
+	private static final Logger logger = LogManager.getLogger(SeleniumActions.class);
+	public static WebDriver driver=null;
 	//This method opens give URL
 	public void openURL(String URL) {
 		driver.get(URL);
@@ -40,7 +41,8 @@ public class SeleniumActions {
 	}
 	public void click(By locator, long waitInSec){
 		try {		
-			this.waitUntilVisibilityOfElement(locator, waitInSec).click();			
+			this.waitUntilVisibilityOfElement(locator, waitInSec).click();		
+			logger.info("clicked on "+locator.toString());
 		}catch(Exception e) {
 			System.out.println("Exception: "+e.getStackTrace());
 			Assert.fail(e.getMessage());
@@ -85,16 +87,13 @@ public class SeleniumActions {
 	}
 	public boolean checkTitle(String expectedTitle, boolean exactmath) {			
 		String actualTitle = this.driver.getTitle();
+		logger.info("Title: "+actualTitle);
 		if(exactmath)
 			return actualTitle.equalsIgnoreCase(expectedTitle);
 		else
 			return actualTitle.contains(expectedTitle);		
 	}
-	public void quitDriver() {
-		if(driver!=null)
-			driver.quit();
-		DriverInit.setDriverNull();
-	}
+	
 	
 	public String captureScreenShot(String screenshotName){
 		String screenshotFilePath = new File(".").getAbsolutePath()+"/screenshots/"+screenshotName;
