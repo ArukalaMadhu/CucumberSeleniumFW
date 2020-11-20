@@ -19,10 +19,13 @@ public class BaseClass {
 	
 	@After()
 	public void quitBrowser(Scenario scenario) {
-		if(scenario.isFailed()) {
-			TakesScreenshot ts = (TakesScreenshot) SeleniumActions.driver;
-			byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
-			scenario.embed(screenshot, "image/png");
+		try{
+			if(scenario.isFailed()) {
+				TakesScreenshot ts = (TakesScreenshot) SeleniumActions.driver;
+				byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
+				scenario.embed(screenshot, "image/png");
+			}
+		}catch(Exception e){			
 		}
 		DriverInit.quitDriver();
 	}
