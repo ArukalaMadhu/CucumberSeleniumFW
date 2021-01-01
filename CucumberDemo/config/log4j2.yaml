@@ -6,8 +6,19 @@ Configuration:
       fileName: logfile.log
       PatternLayout:
         Pattern: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
+    Console:
+      name: LogToConsole
+      target: SYSTEM_OUT
+      PatternLayout:
+        pattern: "%d [%t] %-5p %c - %m%n"
   Loggers:
+    Logger:
+      - name: test.stepdef
+        additivity: true
+        level: debug
+        AppenderRef:
+          - ref: LogToConsole
     Root:
-      level: debug
+      level: trace
       AppenderRef:
-        ref: File_Appender
+          -  ref: File_Appender      

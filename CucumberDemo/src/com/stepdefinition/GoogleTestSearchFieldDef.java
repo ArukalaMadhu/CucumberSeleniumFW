@@ -8,18 +8,7 @@ import cucumber.api.java.en.Then;
 import io.cucumber.datatable.DataTable;
 import selenium.SeleniumActions;
 
-public class GoogleTestSearchFieldDef extends SeleniumActions {
-//	@Before
-//	public void initDriver() {
-//		super.driver =  DriverInit.getDriver(); 
-//	}
-//	
-//	@After
-//	public void quitBrowser() {
-//		quitDriver();
-//	}
-//		
-	
+public class GoogleTestSearchFieldDef extends SeleniumActions {	
 	@Then("^the page displays Im Feeling Lucky button$")
 	public void the_page_displays_Im_Feeling_Lucky_button(DataTable data) {
 		List<List<String>> d = data.asLists();
@@ -39,10 +28,5 @@ public class GoogleTestSearchFieldDef extends SeleniumActions {
 		 
 		//Assert.assertTrue( isElementDisplayed(By.id(d.get(0).get(0))),"I'm Feeling Lucky is not displayed ");
 	}
-//	@Then("^close the browser$")
-//	public void close_the_browser() {
-//		driver.quit();
-//		setDriverNull();
-//	}
 
 }

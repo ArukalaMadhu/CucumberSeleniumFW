@@ -9,7 +9,8 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
 
-import com.stepdefinition.BaseClass;
+import com.cucumber.listener.Reporter;
+import com.stepdefinition.Hooks;
 
 import base.DriverInit;
 

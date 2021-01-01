@@ -4,3 +4,6 @@
 /xml_output/
 /json_output/
 /debug.log
+/test-output/
+/logfile.log
+/sikuli_images/

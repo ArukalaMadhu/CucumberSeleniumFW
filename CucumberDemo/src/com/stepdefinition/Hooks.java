@@ -9,11 +9,12 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import selenium.SeleniumActions;
 
-public class BaseClass {
+public class Hooks {
 	
 	@Before()
 	public void initDriver() {
 		System.setProperty("log4j.configurationFile","config/log4j2.yaml");
+		
 		SeleniumActions.driver =  DriverInit.getDriver(); 
 	}
 	

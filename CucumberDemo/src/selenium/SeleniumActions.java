@@ -1,8 +1,7 @@
 package selenium;
 
+import java.awt.Robot;
 import java.io.File;
-import java.io.IOException;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -31,13 +30,37 @@ public class SeleniumActions{
 	 */
 	public WebElement waitUntilPresenceOfElement(By locator, long waitInSec)throws Exception{		
 		WebDriverWait wait = new WebDriverWait(driver, waitInSec);
-		WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));		
+		WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));	
+		scrollToElement(element);
+		highlightElement(element);
 		return element;
 	}
 	public WebElement waitUntilVisibilityOfElement(By locator, long waitInSec)throws Exception{		
 		WebDriverWait wait = new WebDriverWait(driver, waitInSec);
-		WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));		
+		WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		scrollToElement(element);
+		highlightElement(element);
 		return element;
+	}
+	/* This method press the corresponding key from keyboard
+	 * @param - key - type of key e.x., KeyEvent.VK_TAB	 * 
+	 */
+	public void pressKey(int key)throws Exception{
+		Robot robot = new Robot();
+		robot.keyPress(key);
+		robot.keyRelease(key);
+	}
+	
+	public void scrollToElement(WebElement element){
+		try{
+			((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		}catch(Exception e){}
+	}
+	public void highlightElement(WebElement element){
+		try{
+			JavascriptExecutor js = (JavascriptExecutor)driver;		 
+			js.executeScript("arguments[0].setAttribute('style', 'background: blue; border: 2px solid yellow;');",element);
+		}catch(Exception e){}
 	}
 	public void click(By locator, long waitInSec){
 		try {		
@@ -69,7 +92,7 @@ public class SeleniumActions{
 	public String runJavaScript(String jscript){
 		String executeScriptResponse = null;
 		try{		
-			JavascriptExecutor jsDriver = (JavascriptExecutor)this.driver;
+			JavascriptExecutor jsDriver = (JavascriptExecutor)driver;
 			executeScriptResponse = jsDriver.executeScript(jscript).toString();
 		}catch(Exception e) {
 			System.out.println("Exception: "+e.getStackTrace());
@@ -86,7 +109,7 @@ public class SeleniumActions{
 		return false;
 	}
 	public boolean checkTitle(String expectedTitle, boolean exactmath) {			
-		String actualTitle = this.driver.getTitle();
+		String actualTitle = driver.getTitle();
 		logger.info("Title: "+actualTitle);
 		if(exactmath)
 			return actualTitle.equalsIgnoreCase(expectedTitle);
@@ -99,7 +122,7 @@ public class SeleniumActions{
 		String screenshotFilePath = new File(".").getAbsolutePath()+"/screenshots/"+screenshotName;
 		try{
 			//Convert web driver object to TakeScreenshot
-			TakesScreenshot scrShot =((TakesScreenshot)this.driver);
+			TakesScreenshot scrShot =((TakesScreenshot)driver);
 			//Call getScreenshotAs method to create image file
 			File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
 			//Move image file to new destination		
