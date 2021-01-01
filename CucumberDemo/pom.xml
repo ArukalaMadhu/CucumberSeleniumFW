@@ -9,6 +9,7 @@
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.0</version>
 				<configuration>
@@ -143,13 +144,17 @@
     <scope>test</scope>
 </dependency>
 <dependency>
+    <groupId>org.testng</groupId>
+    <artifactId>testng</artifactId>
+    <version>6.14.3</version>
+    <scope>test</scope>
+</dependency>
+<dependency>
     <groupId>io.cucumber</groupId>
     <artifactId>cucumber-picocontainer</artifactId>
     <version>4.2.6</version>
     <scope>test</scope>
 </dependency>
-
-
 		<dependency>
 			<groupId>net.masterthought</groupId>
 			<artifactId>cucumber-reporting</artifactId>
