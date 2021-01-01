@@ -48,6 +48,7 @@ public class GoogleSearchFieldDef extends SeleniumActions {
 //		quitDriver();
 //	}
 		
+	
 	@Given("^Open google \"(.*)\"$") //\"([^\"]*)\"
 	public void open_google_URL(String URL) {
 	   openURL(URL);
